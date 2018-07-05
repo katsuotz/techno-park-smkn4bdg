@@ -210,40 +210,52 @@
 
 	<script type="text/javascript">
 
-		$('.responsive').slick({
-			dots: true,
-			infinite: true,
-			speed: 300,
-			slidesToShow: 1,
-			centerMode: true,
-			variableWidth: true
-		});
+		$(document).ready(function () {
 
-		function myMap() {
-            var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
-            var mapCanvas = document.getElementById("googleMap");
-            var mapOptions = {
-            	center: myCenter,
-            	zoom: 14
-            };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-            var marker = new google.maps.Marker({
-            	position:myCenter
-            });
-            marker.setMap(map);
-        }
+			$('.responsive').slick({
+				dots: true,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				centerMode: true,
+				variableWidth: true
+			});
 
-        $(window).on('scroll', function () {
-        	var y = this.scrollY
+			function myMap() {
+	            var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
+	            var mapCanvas = document.getElementById("googleMap");
+	            var mapOptions = {
+	            	center: myCenter,
+	            	zoom: 14
+	            };
+	            var map = new google.maps.Map(mapCanvas, mapOptions);
+	            var marker = new google.maps.Marker({
+	            	position:myCenter
+	            });
+	            marker.setMap(map);
+	        }
 
-        	if (y >= 50) {
-        		$('.navbar').addClass('fixed-top my-navbar')
-        		$('.navbar').removeClass('position-absolute')
-        	} else {
-        		$('.navbar').addClass('position-absolute')
-        		$('.navbar').removeClass('fixed-top my-navbar')
-        	}
-        })
+	        $(window).on('scroll', function () {
+	        	var y = this.scrollY
+
+	        	if (y >= 50) {
+	        		$('.navbar').addClass('fixed-top my-navbar')
+	        		$('.navbar').removeClass('position-absolute')
+	        	} else {
+	        		$('.navbar').addClass('position-absolute')
+	        		$('.navbar').removeClass('fixed-top my-navbar')
+	        	}
+	        })
+
+	        $(document).on('click', 'a[href^="#"]', function (event) {
+			    event.preventDefault();
+
+			    $('html, body').animate({
+			        scrollTop: $($.attr(this, 'href')).offset().top
+			    }, 500);
+			});
+        
+		})
 
     </script>
 
