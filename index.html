@@ -7,11 +7,11 @@
 
 	<link rel="icon" href="./images/techno-park-logo-square.png">
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbar" data-offset="0" id="beranda">
 
 	<!-- Navbar -->
 
-	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar position-absolute navbar-expand-lg w-100" id="navbar">
 		<div class="container">
 			<a class="navbar-brand font-weight-bold" href="#"><img src="./images/techno-park-logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,22 +19,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto font-weight-bold">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<li class="nav-item">
+						<a class="nav-link active" href="#beranda">Beranda <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
+						<a class="nav-link" href="#berita">Berita</a>
 					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Dropdown
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
+					<li class="nav-item">
+						<a class="nav-link" href="#profil">Profil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#mitra">Mitra</a>
 					</li>
 				</ul>
 			</div>
@@ -43,15 +38,15 @@
 
 	<!-- Header -->
 
-	<header class="main-header" style="background-image: url('./images/unity.jpg')"></header>
+	<header class="main-header" style="background-image: url('./images/unity.jpg')" id="home"></header>
 
 	<!-- Section -->
 
-	<section class="news-section my-5 py-3">
+	<section class="news-section my-5 py-3" id="berita">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<h1 class="section-title text-center mb-4 font-weight-bold">Latest News</h1>
+					<h1 class="section-title text-center mb-4 font-weight-bold">Berita</h1>
 				</div>
 			</div>
 			<div class="row mt-3">
@@ -92,13 +87,13 @@
 		</div>
 	</section>
 
-	<!-- About -->
+	<!-- Profil -->
 
-	<section class="about-section my-5 py-3">
+	<section class="about-section my-5 py-3" id="profil">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<h1 class="section-title text-center mb-4 font-weight-bold">About</h1>
+					<h1 class="section-title text-center mb-4 font-weight-bold">Profil</h1>
 				</div>
 			</div>
 			<div class="row mt-3">
@@ -172,7 +167,8 @@
 		</div>
 	</footer>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
@@ -190,6 +186,19 @@
             });
             marker.setMap(map);
         }
+
+        $(window).on('scroll', function () {
+        	var y = this.scrollY
+
+        	if (y >= 50) {
+        		$('.navbar').addClass('fixed-top my-navbar')
+        		$('.navbar').removeClass('position-absolute')
+        	} else {
+        		$('.navbar').addClass('position-absolute')
+        		$('.navbar').removeClass('fixed-top my-navbar')
+        	}
+        })
+
 	</script>
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbJ83iOH3BNaVWtOjaKUikj9sx2OIHzfs&callback=myMap"></script>
