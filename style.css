@@ -13,7 +13,11 @@ body, html {
 }
 
 /* Text */
-a, a:focus, a:hover,
+a.nav-link:focus {
+	color: rgba(0,0,0,.5);
+}
+
+a, a:hover,
 .navbar-brand,
 .navbar-brand:hover,
 .navbar-nav .active>.nav-link,
@@ -113,4 +117,10 @@ footer {
 
 .footer-nav a:hover {
 	color: #1399d6;
+}
+
+/* Mitra */
+
+.img-mitra {
+	padding: 20px;
 }
