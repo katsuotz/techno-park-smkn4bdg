@@ -210,6 +210,20 @@
 
 	<script type="text/javascript">
 
+		function myMap() {
+            var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
+            var mapCanvas = document.getElementById("googleMap");
+            var mapOptions = {
+            	center: myCenter,
+            	zoom: 14
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            var marker = new google.maps.Marker({
+            	position:myCenter
+            });
+            marker.setMap(map);
+        }
+
 		$(document).ready(function () {
 
 			$('.responsive').slick({
@@ -221,19 +235,6 @@
 				variableWidth: true
 			});
 
-			function myMap() {
-	            var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
-	            var mapCanvas = document.getElementById("googleMap");
-	            var mapOptions = {
-	            	center: myCenter,
-	            	zoom: 14
-	            };
-	            var map = new google.maps.Map(mapCanvas, mapOptions);
-	            var marker = new google.maps.Marker({
-	            	position:myCenter
-	            });
-	            marker.setMap(map);
-	        }
 
 	        $(window).on('scroll', function () {
 	        	var y = this.scrollY
@@ -254,7 +255,7 @@
 			        scrollTop: $($.attr(this, 'href')).offset().top
 			    }, 500);
 			});
-        
+
 		})
 
     </script>
