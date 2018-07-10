@@ -15,9 +15,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 	Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
 
-	Route::get('/', function () {
-	    return view('dashboard.index');
-	});
+	Route::get('/', 'HomeController@index');
 
 	Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
 		Route::get('/', 'DashboardController@index');
