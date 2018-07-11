@@ -64,7 +64,28 @@ return array(
     |
     */
 
-    'roots' => null,
+    'roots' => array(
+        array(
+            'driver' => 'LocalFileSystem',
+            'path'   => public_path('uploads'), 
+            'URL'    => Config('app.url') . '/uploads',
+            'tmbURL' => Config('app.url') . '/uploads/.tmb',
+            'tmbPath' => public_path('uploads/.tmb'),
+            'attributes' => array(
+                array( 
+                    'pattern' => '/\/\./',
+                    'read' => false,
+                    'write' => false,
+                    'locked' => true,
+                    'hidden' => true
+                )
+            ),
+            'tmbSize'    => 200,
+            'utf8fix'    => true,
+            'tmbCrop'    => true,
+            'tmbBgColor' => 'transparent',
+        )
+    ),
 
     /*
     |--------------------------------------------------------------------------

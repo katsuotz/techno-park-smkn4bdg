@@ -5,6 +5,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 :root {
   --blue: #2196f3;
   --indigo: #3f51b5;
@@ -8732,6 +8733,8 @@ hr {
   width: 70px;
 }
 .sidebar-logo a .logo-text {
+  font-family: NTR;
+  font-weight: bold;
   color: #313435;
 }
 .sidebar-logo .mobile-toggle {

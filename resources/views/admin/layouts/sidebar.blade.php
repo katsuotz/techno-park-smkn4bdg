@@ -4,15 +4,15 @@
     <div class="sidebar-logo">
       <div class="peers ai-c fxw-nw">
         <div class="peer peer-greed">
-          <a class="sidebar-link td-n" href="index.html">
+          <a class="sidebar-link td-n" href="{{ route('dashboard') }}">
             <div class="peers ai-c fxw-nw">
               <div class="peer">
                 <div class="logo">
-                  <img src="{{ asset('assets/static/images/logo.png') }}" alt="">
+                  <img src="{{ asset('assets/images/techno-park-logo-square.png') }}" alt="" width="50" style="margin: 10px;">
                 </div>
               </div>
               <div class="peer peer-greed">
-                <h5 class="lh-1 mB-0 logo-text">Adminator</h5>
+                <h5 class="lh-1 mB-0 logo-text">Techno Park <br>SMKN 4 Bandung</h5>
               </div>
             </div>
           </a>
@@ -30,7 +30,7 @@
     <!-- ### $Sidebar Menu ### -->
     <ul class="sidebar-menu scrollable pos-r">
       <li class="nav-item mT-30 active">
-        <a class="sidebar-link" href="{{ url('admin') }}">
+        <a class="sidebar-link" href="{{ route('dashboard') }}">
           <span class="icon-holder">
             <i class="c-blue-500 ti-home"></i>
           </span>
@@ -38,7 +38,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class='sidebar-link' href="{{ url('admin/posts') }}">
+        <a class='sidebar-link' href="{{ route('posts.index') }}">
           <span class="icon-holder">
             <i class="c-deep-orange-500 ti-layout-media-left-alt"></i>
           </span>
@@ -46,7 +46,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class='sidebar-link' href="{{ url('admin/partners') }}">
+        <a class='sidebar-link' href="{{ route('partners.index') }}">
           <span class="icon-holder">
             <i class="c-orange-500 ti-layout-grid2"></i>
           </span>

@@ -11,29 +11,31 @@
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Guest Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('/', 'HomeController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+|
+*/
+
 Route::group(['middleware' => 'web'], function () {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Guest Routes
-	|--------------------------------------------------------------------------
-	|
-	*/
-
-	Route::get('/', 'HomeController@index');
-
-	/*
-	|--------------------------------------------------------------------------
-	| Admin Routes
-	|--------------------------------------------------------------------------
-	|
-	*/
 
 	Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 	Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
 
 	Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
-		Route::get('/', 'DashboardController@index');
+		
+		Route::get('/', 'DashboardController@index')->name('dashboard');
 
 		Route::resources([
 			'posts' => 'PostController',
@@ -41,10 +43,8 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 
 		// API
-		Route::post('posts/all', 'PostController@get')->name('posts.get');
-		Route::post('partners/all', 'PostController@get')->name('partners.get');
-
-		Route::get('elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup');
+		Route::post('posts/get', 'PostController@get')->name('posts.get');
+		Route::post('partners/get', 'PostController@get')->name('partners.get');
 	});
 
 });

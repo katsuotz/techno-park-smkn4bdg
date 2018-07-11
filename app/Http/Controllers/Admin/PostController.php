@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Validator;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class PostController extends Controller
 {
@@ -36,7 +38,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        DB::beginTransaction();
+
+        try {
+            Post::create([
+                'title' => $request->title,
+                'content' => $request->content,
+                'image' => $request->featured_image_path,
+                'created_at' => $request->date ? $request->date : \Carbon\Carbon::now(),
+                'slug' => str_slug($request->title)
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('posts.index');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['Internal Server Error.']);
+        }
     }
 
     /**
@@ -86,6 +111,47 @@ class PostController extends Controller
 
     public function get(Request $request)
     {
-        # code...
+        $length = $request->length;
+        $start = $request->start;
+        $search = $request->search['value'];
+
+        $columns = $request->columns;
+        $order = $request->order;
+
+        $order_col = $order[0]['column'];
+        $order_dir = $order[0]['dir'];
+
+        // return response()->json($request->all());
+
+        $result = new Post;
+
+        if ($search) {
+            $result = $result->where(function ($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%')
+                      ->orwhere('content', 'like', '%' . $search . '%')
+                      ->orwhere('slug', 'like', '%' . $search . '%');
+            });
+        }
+
+
+        $result = $result->orderBy($columns[$order_col]['data']['_'], $order_dir);
+
+        $count = $result->count();
+        $result = $result->take($length);
+        $result = $result->skip($start);
+
+        return response()->json([
+            'recordsTotal' => $result->count(),
+            'recordsFiltered' => $count,
+            'data' => $result->get(),
+        ]);
+    }
+
+    public function rules()
+    {
+        return [
+            'title' => 'required|string|max:30',
+            'content' => 'required',
+        ];
     }
 }
