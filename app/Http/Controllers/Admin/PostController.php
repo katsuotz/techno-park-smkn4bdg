@@ -57,7 +57,7 @@ class PostController extends Controller
 
             DB::commit();
 
-            return redirect()->route('posts.index');
+            return redirect()->route('posts.index')->with('success', 'Your post has already been published.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['Internal Server Error.']);

@@ -13,4 +13,9 @@ class Post extends Model
 		'slug',
 		'created_at'
 	];
+
+	protected $dates = [
+		'created_at',
+		'updated_at'
+	];
 }

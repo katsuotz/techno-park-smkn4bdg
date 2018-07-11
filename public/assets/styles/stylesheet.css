@@ -67976,7 +67976,7 @@ footer {
 
 table.dataTable.no-footer {
   border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .sorting_asc:focus {
@@ -68034,6 +68034,8 @@ table.dataTable.no-footer {
 }
 .dataTables_wrapper .dataTables_processing {
   color: #313435;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.0625);
 }
 .dataTables_wrapper .dataTables_paginate {
   color: #72777a;
