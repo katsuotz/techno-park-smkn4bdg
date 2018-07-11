@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/stylesheet.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/custom-stylesheet.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/scripts/themify-icons/themify-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/scripts/jquery-ui/jquery-ui.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('packages/barryvdh/elfinder/css/elfinder.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/DataTables/css/dataTables.bootstrap4.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
+
     <style>
+
       #loader {
         transition: all 0.3s ease-in-out;
         opacity: 1;
@@ -54,6 +64,9 @@
         }
       }
     </style>
+
+    @stack('styles')
+
   </head>
   <body class="app">
     <!-- @TOC -->
@@ -101,26 +114,38 @@
         <!-- ### $App Screen Content ### -->
         <main class='main-content bgc-grey-100'>
           <div id='mainContent'>
-            <div class="full-container">
 
             	@yield('content')
 
-            </div>
           </div>
         </main>
 
         <!-- ### $App Screen Footer ### -->
         <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-          <span>Copyright © 2017 Designed by <a href="https://colorlib.com" target='_blank' title="Colorlib">Colorlib</a>. All rights reserved.</span>
+          <span>Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://www.linkedin.com/in/irfan-fakhri/" target="_blank">Irfan Fakhri</a>. All rights reserved.</span>
         </footer>
       </div>
     </div>
 
     <script type="text/javascript" src="{{ asset('assets/scripts/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/scripts/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/scripts/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/fontawesome/js/all.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/sidebar/index.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/search/index.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('packages/barryvdh/elfinder/js/elfinder.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/vendor/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/ckeditor/adapters/jquery.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.id.min.js') }}"></script>
+
+    @stack('scripts')
 
   </body>
 </html>

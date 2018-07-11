@@ -83,4 +83,9 @@ class PartnerController extends Controller
     {
         //
     }
+    
+    public function get(Request $request)
+    {
+        # code...
+    }
 }
