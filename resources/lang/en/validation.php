@@ -125,8 +125,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'logo_path' => [
+            'required' => 'You need to select partner logo.',
         ],
     ],
 

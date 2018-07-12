@@ -68206,6 +68206,7 @@ table.dataTable.no-footer {
   color: #fff;
   background-color: #7774e7;
   border-color: transparent;
+  background-image: none;
 }
 
 .datepicker table tr td span:hover,

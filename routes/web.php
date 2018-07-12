@@ -37,14 +37,17 @@ Route::group(['middleware' => 'web'], function () {
 		
 		Route::get('/', 'DashboardController@index')->name('dashboard');
 
-		Route::resources([
-			'posts' => 'PostController',
-			'partners' => 'PartnerController'
+		Route::resource('posts', 'PostController', [
+			'except' => 'show'
+		]);
+
+		Route::resource('partners', 'PartnerController', [
+			'except' => 'show'
 		]);
 
 		// API
 		Route::post('posts/get', 'PostController@get')->name('posts.get');
-		Route::post('partners/get', 'PostController@get')->name('partners.get');
+		Route::post('partners/get', 'PartnerController@get')->name('partners.get');
 	});
 
 });

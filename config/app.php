@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => 'Techno Park SMKN 4 Bandung',
+    'name' => env('APP_ENV', 'Techno Park'),
 
     /*
     |--------------------------------------------------------------------------

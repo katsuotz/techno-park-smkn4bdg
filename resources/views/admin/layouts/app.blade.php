@@ -66,6 +66,7 @@
     <script type="text/javascript" src="{{ asset('assets/scripts/jquery-ui/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/scripts/polyfill.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/fontawesome/js/all.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/sidebar/index.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/search/index.js') }}"></script>
@@ -75,10 +76,28 @@
     <script type="text/javascript" src="{{ asset('assets/vendor/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/ckeditor/adapters/jquery.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('assets/vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/DataTables/js/jquery.dataTables.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.id.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/vendor/sweetalert2/sweetalert2.all.min.js') }}"></script>
+
+    <script type="text/javascript">
+      const cancelButton = 'mx-1 btn btn-light btn-lg'
+
+      const swalDangerButton = swal.mixin({
+          confirmButtonClass: 'mx-1 btn btn-danger btn-lg',
+          cancelButtonClass: cancelButton,
+          buttonsStyling: false,
+      })
+
+      const swalPrimaryButton = swal.mixin({
+          confirmButtonClass: 'mx-1 btn btn-primary btn-lg',
+          cancelButtonClass: cancelButton,
+          buttonsStyling: false,
+      })
+    </script>
 
     @stack('scripts')
 

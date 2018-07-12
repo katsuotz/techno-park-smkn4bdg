@@ -2,41 +2,30 @@
 
 @section('content')
 
-<form method="POST" action="{{ @$post ? route('posts.update', $post->id) : route('posts.store') }}">
+<form method="POST" action="{{ @$partner ? route('partners.update', $partner->id) : route('partners.store') }}">
 	{{ csrf_field() }}
-	{{ @$post ? method_field('PATCH') : '' }}
+	{{ @$partner ? method_field('PATCH') : '' }}
 
 	<div class="row">
 		<div class="col-md-9">
 
 			<div class="bgc-white p-20 bd mb-3">
-				<input class="form-control" name="title" value="{{ old('title', @$post->title) }}" placeholder="Post Title" autocomplete="off">
-			</div>
-
-			<div class="bgc-white p-20 bd">
-				<textarea class="content" name="content">{!! old('content', @$post->content) !!}</textarea>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="bgc-white p-20 bd">
 				<div class="form-group">
-					<h6 class="c-grey-900">Publish Date</h6>
-					<div class="input-group mb-2 mr-sm-2">
-						<input type="text" class="form-control datepicker" name="date" placeholder="{{ \Carbon\Carbon::now()->format('d/m/Y') }}" value="{{ old('date', @$post ? @$post->created_at->format('d/m/Y') : '') }}" autocomplete="off">
-						<div class="input-group-append">
-							<div class="input-group-text bgc-blue-500 bdc-blue-500 c-white"><i class="ti-calendar"></i></div>
-						</div>
-					</div>
+					<input class="form-control" name="name" value="{{ old('name', @$partner->name) }}" placeholder="Partner / Company Name (ex: SMK Negeri 4 Bandung)" autocomplete="off">
+				</div>
+				<div class="form-group">
+					<input class="form-control" name="url" value="{{ old('url', @$partner->url) }}" placeholder="Partner / Company Profile URL (ex: https://smkn4bdg.sch.id) (optional)" autocomplete="off">
 				</div>
 				<div class="form-group m-0">
-					<h6 class="c-grey-900">Featured Image</h6>
-					<button type="button" class="btn btn-primary" id="btnSelectImage">Select Image</button>
-					<img src="{{ old('featured_image_path', @$post->image) ? asset(old('featured_image_path', @$post->image)) : '' }}" class="w-100 mt-3" id="featuredImage">
-					<input type="hidden" name="featured_image_path" value="{{ old('featured_image_path', @$post->image) }}">
+					<button type="button" class="btn btn-primary" id="btnSelectImage">Select Logo</button>
+				</div>
+				<div class="form-group m-0">
+					<img src="{{ old('logo_path', @$partner->image) ? asset(old('logo_path', @$partner->image)) : '' }}" class="mt-3" id="featuredImage" style="max-width: 100%; width: 180px;">
+					<input type="hidden" name="logo_path" value="{{ old('logo_path', @$partner->image) }}">
 				</div>
 			</div>
 			<div class="form-group text-right mt-3">
-				<button class="btn btn-primary btn-sm" type="submit">Save</button>
+				<button class="btn btn-primary" type="submit">Save</button>
 			</div>
 		</div>
 	</div>
@@ -85,7 +74,7 @@
 	                    	var image_path = '{{ asset('') }}' + url.path
 	                    	$('.ui-dialog-titlebar-close').click()
 	                        $('#featuredImage').attr('src', image_path)
-	                        $('[name=featured_image_path]').val(url.path)
+	                        $('[name=logo_path]').val(url.path)
 	                    }
 	                }).elfinder('instance')
 	            }

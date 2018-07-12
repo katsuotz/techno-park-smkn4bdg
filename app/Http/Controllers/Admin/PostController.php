@@ -51,7 +51,7 @@ class PostController extends Controller
                 'title' => $request->title,
                 'content' => $request->content,
                 'image' => $request->featured_image_path,
-                'created_at' => $request->date ? $request->date : \Carbon\Carbon::now(),
+                'created_at' => $request->date ? \Carbon\Carbon::createFromFormat('d/m/Y', $request->date) : \Carbon\Carbon::now(),
                 'slug' => str_slug($request->title)
             ]);
 
@@ -83,7 +83,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.form', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -95,7 +97,28 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        DB::beginTransaction();
+
+        try {
+            $post->title = $request->title;
+            $post->content = $request->content;
+            $post->image = $request->featured_image_path;
+            $post->created_at = $request->date ? \Carbon\Carbon::createFromFormat('d/m/Y', $request->date) : \Carbon\Carbon::now();
+            $post->save();
+
+            DB::commit();
+
+            return redirect()->route('posts.index')->with('success', '<b>' . $post->title . '</b> has already been updated.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['Internal Server Error.']);
+        }
     }
 
     /**
@@ -106,7 +129,24 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            $post->delete();
+            DB::commit();
+
+            return response()->json([
+                'status' => true,
+                'msg' => 'success'
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return response()->json([
+                'status' => false,
+                'msg' => 'error'
+            ], 400);
+        }
     }
 
     public function get(Request $request)
@@ -126,6 +166,7 @@ class PostController extends Controller
         $result = new Post;
 
         if ($search) {
+            $search = str_replace(asset(''), '', $search);
             $result = $result->where(function ($query) use ($search) {
                 $query->where('title', 'like', '%' . $search . '%')
                       ->orwhere('content', 'like', '%' . $search . '%')

@@ -6,7 +6,7 @@
 	<h5 class="alert-heading">Error!</h5>
 	<ul>
 	@foreach ($errors->all() as $error)
-		<li>{{ $error }}</li>
+		<li>{!! $error !!}</li>
 	@endforeach
 	</ul>
 </div>
@@ -18,7 +18,7 @@
     	<span aria-hidden="true">&times;</span>
 	</button>
 	<h5 class="alert-heading">Error!</h5>
-    <p class="m-0">{{ session('status') }}</p>
+    <p class="m-0">{!! session('status') !!}</p>
 </div>
 @endif
 
@@ -28,7 +28,7 @@
     	<span aria-hidden="true">&times;</span>
 	</button>
 	<h5 class="alert-heading">Success!</h5>
-    <p class="m-0">{{ session('success') }}</p>
+    <p class="m-0">{!! session('success') !!}</p>
 </div>
 @endif
 
@@ -38,6 +38,6 @@
     	<span aria-hidden="true">&times;</span>
 	</button>
 	<h5 class="alert-heading">Info!</h5>
-    <p class="m-0">{{ session('info') }}</p>
+    <p class="m-0">{!! session('info') !!}</p>
 </div>
 @endif

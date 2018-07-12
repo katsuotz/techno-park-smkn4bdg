@@ -5,16 +5,16 @@
 <div class="bgc-white p-20 bd">
 	<h5 class="c-grey-900 mb-4">
 		Posts
-		<a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm">Add New</a>
+		<a href="{{ route('partners.create') }}" class="btn btn-primary btn-sm">Add New</a>
 	</h5>
 
 	<table class="table" id="dataTable">
         <thead>
             <tr>
-                <th>Thumbnail</th>
-                <th>Title</th>
-                <th>Publish Date</th>
-                <th>Updated at</th>
+                <th>Logo</th>
+                <th>Partner</th>
+                <th>URL</th>
+                <th>Last Update</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -26,11 +26,11 @@
 @push('scripts')
 <script type="text/javascript">
 	$(document).ready(function () {
-		var table = $('#dataTable').DataTable({
+		$('#dataTable').dataTable({
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{ route('posts.get') }}',
+                url: '{{ route('partners.get') }}',
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}'
@@ -39,17 +39,16 @@
             columns: [
                 {
                     render: function (data, type, row) {
-                        return '<img src="{{ asset('') }}' + row.image + '" width="120">'
+                        return '<img src="{{ asset('') }}' + row.image + '" width="80">'
                     }
                 }, {
                     data: {
-                        _: 'title',
-                        sort: 'title'
+                        _: 'name',
+                        sort: 'name'
                     },
                 }, {
-                    data: {
-                        _: 'created_at',
-                        sort: 'created_at'
+                    render: (data, type, row) => {
+                        return row.url ? `<a target='_blank' href='${row.url}'>${row.url}</a>` : '<i>empty</i>'
                     },
                 }, {
                     data: {
@@ -59,18 +58,17 @@
                 }, {
                     render: function (data, type, row) {
                         return '\
-                        <a href="#" class="btn btn-primary"><i class="ti-eye"></i></a>\
-                        <a href="{{ url('admin/posts') }}/' + row.id + '/edit" class="btn btn-warning"><i class="ti-pencil-alt"></i></a>\
+                        <a href="{{ url('admin/partners') }}/' + row.id + '/edit" class="btn btn-warning"><i class="ti-pencil-alt"></i></a>\
                         <button data-id="' + row.id + '" data-title="' + row.title + '" class="btn btn-danger btn-delete"><i class="ti-trash"></i></button>\
                         '
                     }
                 }
             ],
             columnDefs: [ { 
-                targets: [0, 4],
+                targets: [0, 2, 4],
                 sortable: false,
             } ],
-            order: [[ 2, 'desc' ]]
+            order: [[ 3, 'desc' ]]
         })
 
         $(document).on('click', '.btn-delete', function (e) {
@@ -78,7 +76,7 @@
 
             var id = $(this).data('id')
             var title = $(this).data('title')
-            var url = '{{ url('admin/posts') }}/' + id
+            var url = '{{ url('admin/partners') }}/' + id
 
             var parent = $(this).parent().parent()
 
@@ -118,7 +116,7 @@
                 allowOutsideClick: () => !swalDangerButton.isLoading()
             }).then(res => {
                 if (res.value) {
-                    table.ajax.reload()
+                    parent.slideUp()
                     swalPrimaryButton(
                         'Deleted!',
                         'Your post has been deleted.',

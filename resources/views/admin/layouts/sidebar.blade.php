@@ -29,7 +29,7 @@
 
     <!-- ### $Sidebar Menu ### -->
     <ul class="sidebar-menu scrollable pos-r">
-      <li class="nav-item mT-30 active">
+      <li class="nav-item mT-30">
         <a class="sidebar-link" href="{{ route('dashboard') }}">
           <span class="icon-holder">
             <i class="c-blue-500 ti-home"></i>
@@ -54,9 +54,25 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class='sidebar-link' href="{{ route('posts.index') }}">
+          <span class="icon-holder">
+            <i class="c-green-500 ti-info-alt"></i>
+          </span>
+          <span class="title">Site Info</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class='sidebar-link' href="{{ route('posts.index') }}">
+          <span class="icon-holder">
+            <i class="c-teal-500 ti-user"></i>
+          </span>
+          <span class="title">Profile</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class='sidebar-link' href="{{ url('') }}">
           <span class="icon-holder">
-            <i class="c-green-500 ti-map"></i>
+            <i class="c-cyan-500 ti-map"></i>
           </span>
           <span class="title">View Website</span>
         </a>
