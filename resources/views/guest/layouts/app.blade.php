@@ -47,135 +47,7 @@
 		</div>
 	</nav>
 
-	<!-- Header -->
-
-	<header class="main-header" style="background-image: url('./images/unity.jpg')" id="home"></header>
-
-	<!-- Section -->
-
-	<section class="news-section my-5 py-3" id="berita">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1 class="section-title text-center mb-4 font-weight-bold">Berita</h1>
-				</div>
-			</div>
-			<div class="row mt-3">
-				<div class="col-md-4">
-					<div class="card">
-						<img class="card-img-top" src="./images/unity.jpg" alt="Card image cap">
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="#">Special title treatment</a>
-							</h4>
-							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							<hr>
-							<p class="card-text">
-								<small class="text-muted">3 Januari 2018</small>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card">
-						<img class="card-img-top" src="./images/unity.jpg" alt="Card image cap">
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="#">Special title treatment</a>
-							</h4>
-							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							<hr>
-							<p class="card-text">
-								<small class="text-muted">3 Januari 2018</small>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card">
-						<img class="card-img-top" src="./images/unity.jpg" alt="Card image cap">
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="#">Special title treatment</a>
-							</h4>
-							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							<hr>
-							<p class="card-text">
-								<small class="text-muted">3 Januari 2018</small>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Profil -->
-
-	<section class="about-section my-5 py-3" id="profil">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1 class="section-title text-center mb-4 font-weight-bold">Profil</h1>
-				</div>
-			</div>
-			<div class="row mt-3">
-				<div class="col">
-					<div class="row mb-2">
-						<div class="col-md-3">
-							<h4 class="font-weight-bold">Vision</h4>
-						</div>
-						<div class="col-md-8">
-							<p class="section-text">
-								Menjadi Sekolah Menengah Kejuruan Unggulan di Jawa Barat yang berstandar Nasional dan Internasional
-							</p>
-						</div>
-					</div>
-					<div class="row mt-2">
-						<div class="col-md-3">
-							<h4 class="font-weight-bold">Mission</h4>
-						</div>
-						<div class="col-md-8">
-							<ul class="section-list section-text">
-								<li>Memperoleh calon siswa melalui seleksi yang proporsional</li>
-								<li>Mendidik, mengembangkan karakter dan bakat peserta didik melalui Program Mata Pelajaran Wajib,Kejuruan, Muatan Lokal
-									serta Pengembangan diri</li>
-								<li>Membangun Kepercayaan Masyarakat melalui keterbukaan manajemen dan keuangan sekolah</li>
-								<li>Membangun kredibilitas dan akuntabilitas sekolah melalui administrasi yang tertib, bersih dan transparan</li>
-								<li>Meningkatkan kepercayaan stakeholder melalui Program dan kualitas kegiatan belajar mengajar</li>
-								<li>Mengembangkan infrastruktur untuk mendukung proses kegiatan belajar mengajar dengan bantuan stakeholder</li>
-								<li>Menghasilkan lulusan yang mampu bersaing dimasyarakat serta tidak melupakan budaya Jawa Barat.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="about-section my-5 py-3" id="mitra">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1 class="section-title text-center mb-2 font-weight-bold">Mitra</h1>
-				</div>
-			</div>
-			<div class="row mt-3">
-				<div class="col">
-					<div class="row mt-2">
-						<div class="col-md-7 mx-auto">
-							<div class="responsive">
-								<div><img src="{{ asset('assets/images/smkn4.png') }}" alt="" height="150" class="img-mitra"></div>
-								<div><img src="{{ asset('assets/images/google.png') }}" alt="" height="150" class="img-mitra"></div>
-								<div><img src="{{ asset('assets/images/techno-park-logo.jpg') }}" alt="" height="150" class="img-mitra"></div>
-								<div><img src="{{ asset('assets/images/arch-linux.png') }}" alt="" height="150" class="img-mitra"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	@yield('content')
 
 	<!-- Footer -->
 
@@ -232,7 +104,7 @@
 
 			$('.responsive').slick({
 				dots: true,
-				infinite: true,
+				infinite: false,
 				speed: 300,
 				slidesToShow: 1,
 				centerMode: true,
@@ -251,6 +123,8 @@
 	        		$('.navbar').removeClass('fixed-top my-navbar')
 	        	}
 	        })
+
+	        $(window).scroll()
 
 	        $(document).on('click', 'a[href^="#"]', function (event) {
 			    event.preventDefault();

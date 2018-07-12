@@ -49,7 +49,7 @@ class PartnerController extends Controller
         try {
             Partner::create([
                 'name' => $request->name,
-                'image' => $request->logo_path,
+                'image' => str_replace('\\', '/', $request->logo_path),
                 'url' => @$request->url
             ]);
 
@@ -106,7 +106,7 @@ class PartnerController extends Controller
         try {
             $partner->name = $request->name;
             $partner->url = $request->url;
-            $partner->image = $request->logo_path;
+            $partner->image = str_replace('\\', '/', $request->logo_path);
             $partner->save();
 
             DB::commit();

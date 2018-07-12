@@ -113,6 +113,8 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
+    'old' => 'The :attribute is incorrect',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
