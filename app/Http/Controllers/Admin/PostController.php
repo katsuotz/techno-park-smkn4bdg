@@ -50,7 +50,7 @@ class PostController extends Controller
             Post::create([
                 'title' => $request->title,
                 'content' => $request->content,
-                'image' => $request->featured_image_path,
+                'image' => str_replace('\\', '/', $request->featured_image_path),
                 'created_at' => $request->date ? \Carbon\Carbon::createFromFormat('d/m/Y', $request->date) : \Carbon\Carbon::now(),
                 'slug' => str_slug($request->title)
             ]);
@@ -108,7 +108,7 @@ class PostController extends Controller
         try {
             $post->title = $request->title;
             $post->content = $request->content;
-            $post->image = $request->featured_image_path;
+            $post->image = str_replace('\\', '/', $request->featured_image_path);
             $post->created_at = $request->date ? \Carbon\Carbon::createFromFormat('d/m/Y', $request->date) : \Carbon\Carbon::now();
             $post->save();
 

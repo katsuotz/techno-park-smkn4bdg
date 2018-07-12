@@ -4,7 +4,7 @@
 
 <div class="bgc-white p-20 bd">
 	<h5 class="c-grey-900 mb-4">
-		Posts
+		Partners
 		<a href="{{ route('partners.create') }}" class="btn btn-primary btn-sm">Add New</a>
 	</h5>
 

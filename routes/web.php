@@ -15,7 +15,6 @@
 |--------------------------------------------------------------------------
 | Guest Routes
 |--------------------------------------------------------------------------
-|
 */
 
 Route::get('/', 'HomeController@index');
@@ -24,7 +23,6 @@ Route::get('/', 'HomeController@index');
 |--------------------------------------------------------------------------
 | Admin Routes
 |--------------------------------------------------------------------------
-|
 */
 
 Route::group(['middleware' => 'web'], function () {
@@ -35,7 +33,19 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
 		
+		/*
+		|--------------------------------------------------------------------------
+		| Dashboard Routes
+		|--------------------------------------------------------------------------
+		*/
+
 		Route::get('/', 'DashboardController@index')->name('dashboard');
+
+		/*
+		|--------------------------------------------------------------------------
+		| Posts & Partners Resources Routes
+		|--------------------------------------------------------------------------
+		*/
 
 		Route::resource('posts', 'PostController', [
 			'except' => 'show'
@@ -45,7 +55,24 @@ Route::group(['middleware' => 'web'], function () {
 			'except' => 'show'
 		]);
 
-		// API
+		/*
+		|--------------------------------------------------------------------------
+		| Site Info & Profile Routes
+		|--------------------------------------------------------------------------
+		*/
+
+		Route::get('site-info', 'SiteInfoController@index')->name('site_info.index');
+		Route::patch('site-info', 'SiteInfoController@update')->name('site_info.update');
+
+		Route::get('profile', 'ProfileController@index')->name('profile.index');
+		Route::patch('profile', 'ProfileController@update')->name('profile.update');
+
+		/*
+		|--------------------------------------------------------------------------
+		| API Routes
+		|--------------------------------------------------------------------------
+		*/
+
 		Route::post('posts/get', 'PostController@get')->name('posts.get');
 		Route::post('partners/get', 'PartnerController@get')->name('partners.get');
 	});

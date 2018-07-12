@@ -18,4 +18,9 @@ class Post extends Model
 		'created_at',
 		'updated_at'
 	];
+
+	public function getClearContentAttribute()
+	{
+		return html_entity_decode( strip_tags( $this->content ));
+	}
 }

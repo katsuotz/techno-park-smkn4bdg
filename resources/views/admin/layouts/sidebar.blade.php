@@ -54,7 +54,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class='sidebar-link' href="{{ route('posts.index') }}">
+        <a class='sidebar-link' href="{{ route('site_info.index') }}">
           <span class="icon-holder">
             <i class="c-green-500 ti-info-alt"></i>
           </span>
@@ -62,7 +62,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class='sidebar-link' href="{{ route('posts.index') }}">
+        <a class='sidebar-link' href="{{ route('profile.index') }}">
           <span class="icon-holder">
             <i class="c-teal-500 ti-user"></i>
           </span>

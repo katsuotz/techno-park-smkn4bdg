@@ -2,28 +2,31 @@
 
 @section('content')
 
-<form method="POST" action="{{ @$partner ? route('partners.update', $partner->id) : route('partners.store') }}">
+<form method="POST" action="{{ route('profile.update') }}">
 	{{ csrf_field() }}
-	{{ @$partner ? method_field('PATCH') : '' }}
+	{{ method_field('PATCH') }}
 
 	<div class="row">
 		<div class="col">
 
 			<div class="bgc-white p-20 bd mb-3">
+				<h5 class="c-grey-900">Username</h5>
+				<input type="text" name="username" value="{{ old('username', Auth::user()->username) }}" class="form-control" placeholder="ex: johndoe66" autocomplete="off">
+			</div>
+
+			<div class="bgc-white p-20 bd mb-3">
+				<h5 class="c-grey-900">Password</h5>
 				<div class="form-group">
-					<input class="form-control" name="name" value="{{ old('name', @$partner->name) }}" placeholder="Partner / Company Name (ex: SMK Negeri 4 Bandung)" autocomplete="off">
+					<input type="password" name="old_password" class="form-control" placeholder="Write your old password (required)">
 				</div>
 				<div class="form-group">
-					<input class="form-control" name="url" value="{{ old('url', @$partner->url) }}" placeholder="Partner / Company Profile URL (ex: https://smkn4bdg.sch.id) (optional)" autocomplete="off">
+					<input type="password" name="password" class="form-control" placeholder="New Password (optional)">
 				</div>
-				<div class="form-group m-0">
-					<button type="button" class="btn btn-primary" id="btnSelectImage">Select Logo</button>
-				</div>
-				<div class="form-group m-0">
-					<img src="{{ old('logo_path', @$partner->image) ? asset(old('logo_path', @$partner->image)) : '' }}" class="mt-3" id="featuredImage" style="max-width: 100%; width: 180px;">
-					<input type="hidden" name="logo_path" value="{{ old('logo_path', @$partner->image) }}">
+				<div class="form-group">
+					<input type="password" name="password_confirmation" class="form-control" placeholder="Re-write your New Password (required if you change your password with the new one)">
 				</div>
 			</div>
+
 			<div class="form-group text-right mt-3">
 				<button class="btn btn-primary" type="submit">Save</button>
 			</div>
@@ -53,10 +56,16 @@
 			weekStart: 1,
 		})
 
-		$('.content').ckeditor({
+		$('textarea').ckeditor({
 			filebrowserBrowseUrl : '{{ url('elfinder/ckeditor') }}',
 	        filebrowserImageBrowseUrl : '{{ url('elfinder/ckeditor') }}',
-	        height: 500,
+	        height: 200,
+	        toolbarGroups : [
+			    { name: 'document',       groups: [ 'mode', 'document', 'doctools' ] },
+			    { name: 'links' },
+			    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+			    { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+			]
 		})
 
         $('#btnSelectImage').click(function () {
@@ -74,7 +83,7 @@
 	                    	var image_path = '{{ asset('') }}' + url.path
 	                    	$('.ui-dialog-titlebar-close').click()
 	                        $('#featuredImage').attr('src', image_path)
-	                        $('[name=logo_path]').val(url.path)
+	                        $('[name=featured_image_path]').val(url.path)
 	                    }
 	                }).elfinder('instance')
 	            }
