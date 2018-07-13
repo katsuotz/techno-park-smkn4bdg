@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/stylesheet.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/custom-stylesheet.css') }}">
 
-    <link rel="icon" href="{{ asset('assets/images/techno-park-logo-square.png') }}">
+    <link rel="icon" href="{{ asset(Meta::get('icon') ?? 'assets/images/techno-park-logo-square.png') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">

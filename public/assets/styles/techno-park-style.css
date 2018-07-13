@@ -4,6 +4,7 @@
 
 body, html {
 	font-family: NTR, sans-serif;
+	background-color: #f9fafb;
 }
 
 /* Background */
@@ -18,14 +19,14 @@ a.nav-link:focus {
 }
 
 a, a:hover,
-.navbar-brand,
-.navbar-brand:hover,
-.navbar-nav .active>.nav-link,
-.navbar-nav .nav-link.active,
-.navbar-nav .nav-link.show,
-.navbar-nav .show>.nav-link,
-.navbar-nav .nav-link:focus,
-.navbar-nav .nav-link:hover {
+.navbar-light .navbar-brand,
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
 	color: #1399d6;
 	text-decoration: none;
 }
@@ -35,7 +36,22 @@ a, a:hover,
 .navbar {
 	font-size: 1.3em;
 	transition: all .5s;
-	padding: 35px 0;
+	padding: 10px 0;
+	top: 0;
+	z-index: 9999999999;
+}
+
+@media (min-width: 992px) {
+	.navbar {
+		padding: 35px 0;
+	}
+}
+
+@media (max-width: 991px) {
+	.navbar {
+		background-color: #fff;
+		position: fixed !important;
+	}
 }
 
 .nav-link {
@@ -45,7 +61,7 @@ a, a:hover,
 }
 
 .my-navbar {
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px 0px;
+	box-shadow:0 .125rem .25rem rgba(0,0,0,.075);
 	background-color: #fff;
 	padding: 10px 0;
 }
@@ -68,6 +84,10 @@ a, a:hover,
 	background-color: #eee;
 }
 
+.header-img-banner {
+	width: 100%;
+}
+
 /* Section */
 
 .section-text {
@@ -78,18 +98,34 @@ a, a:hover,
 	padding-left: 1.4rem;
 }
 
+/* Button */
+
+.btn-primary {
+	background-color: #1399d6;
+	border-color: #1399d6;
+}
+
+.btn-primary:hover {
+	background-color: #0F8FD9;
+	border-color: #0F8FD9;
+}
+
+.btn {
+	border-radius: 0;
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
 /* Card */
 
 .card {
 	border: 0;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px;
 }
 
 .card-header-img {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 200px;
+	height: 250px;
 }
 
 .card-body {
@@ -98,6 +134,36 @@ a, a:hover,
 
 .card-title {
 	font-weight: bold;
+}
+
+/* Pagination */
+
+.pagination {
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+	padding: 5px 10px;
+	background-color: #fff;
+	font-size: .96em;
+	font-weight: bold;
+}
+
+.page-item .page-link {
+	border: 0;
+	color: #6c757d;
+	padding: 0;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: .225rem;
+	margin: 0 3px;
+}
+
+.page-item .page-link:hover {
+	background-color: #1399d6;
+	color: #fff;
+}
+
+.page-item.active .page-link {
+	background-color: #1399d6;
 }
 
 /* Footer */

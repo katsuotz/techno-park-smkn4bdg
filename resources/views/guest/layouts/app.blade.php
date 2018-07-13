@@ -4,28 +4,31 @@
 <head>
 	<title>Tecnho Park - SMKN 4 Bandung</title>
 	<meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/techno-park-style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/slick/slick.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/slick/slick-theme.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/slick/slick.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/slick/slick-theme.css') }}">
 	<link rel="icon" href="{{ asset('assets/images/techno-park-logo-square.png') }}">
 	
 	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=NTR|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=NTR|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+	@stack('styles')
 
 </head>
-<body data-spy="scroll" data-target="#navbar" data-offset="0" id="beranda">
+<body data-spy="scroll" data-offset="100" data-target="#navbar" data-offset="0" id="beranda" class="{{ Request::segment(1) ? 'pt-5' : '' }}">
 
 	<!-- Navbar -->
+	@if (empty(Request::segment(1)))
 
-	<nav class="navbar position-absolute navbar-expand-lg w-100" id="navbar">
+	<nav class="navbar navbar-light position-absolute navbar-expand-lg w-100 px-4" id="navbar">
 		<div class="container">
-			<a class="navbar-brand font-weight-bold" href="#">
+			<a class="navbar-brand font-weight-bold" href="{{ url('') }}">
 				<img src="{{ asset('assets/images/techno-park-logo.png') }}" height="50px">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-			    aria-expanded="false" aria-label="Toggle navigation">
+				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -46,6 +49,18 @@
 			</div>
 		</div>
 	</nav>
+
+	@else
+
+	<nav class="navbar fixed-top navbar-expand-lg w-100 my-navbar text-center" id="navbar">
+		<div class="container justify-content-center">
+			<a class="navbar-brand font-weight-bold" href="{{ url('') }}">
+				<img src="{{ asset('assets/images/techno-park-logo.png') }}" height="50px">
+			</a>
+		</div>
+	</nav>
+
+	@endif
 
 	@yield('content')
 
@@ -78,66 +93,30 @@
 		</div>
 	</footer>
 
-
-    <script type="text/javascript" src="{{ asset('assets/scripts/jquery-3.3.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/scripts/popper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/slick/slick.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/scripts/jquery-3.3.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/scripts/popper.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendor/slick/slick.min.js') }}"></script>
 
 	<script type="text/javascript">
 
 		function myMap() {
-            var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
-            var mapCanvas = document.getElementById("googleMap");
-            var mapOptions = {
-            	center: myCenter,
-            	zoom: 14
-            };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-            var marker = new google.maps.Marker({
-            	position:myCenter
-            });
-            marker.setMap(map);
-        }
-
-		$(document).ready(function () {
-
-			$('.responsive').slick({
-				dots: true,
-				infinite: false,
-				speed: 300,
-				slidesToShow: 1,
-				centerMode: true,
-				variableWidth: true
+			var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
+			var mapCanvas = document.getElementById("googleMap");
+			var mapOptions = {
+				center: myCenter,
+				zoom: 14
+			};
+			var map = new google.maps.Map(mapCanvas, mapOptions);
+			var marker = new google.maps.Marker({
+				position:myCenter
 			});
+			marker.setMap(map);
+		}
 
+	</script>
 
-	        $(window).on('scroll', function () {
-	        	var y = this.scrollY
-
-	        	if (y >= 50) {
-	        		$('.navbar').addClass('fixed-top my-navbar')
-	        		$('.navbar').removeClass('position-absolute')
-	        	} else {
-	        		$('.navbar').addClass('position-absolute')
-	        		$('.navbar').removeClass('fixed-top my-navbar')
-	        	}
-	        })
-
-	        $(window).scroll()
-
-	        $(document).on('click', 'a[href^="#"]', function (event) {
-			    event.preventDefault();
-
-			    $('html, body').animate({
-			        scrollTop: $($.attr(this, 'href')).offset().top
-			    }, 500);
-			});
-
-		})
-
-    </script>
-
+	@stack('scripts')
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbJ83iOH3BNaVWtOjaKUikj9sx2OIHzfs&callback=myMap"></script>
 

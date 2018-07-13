@@ -17,7 +17,10 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('guest.home');
+
+Route::get('posts/{page?}', 'PostController@index')->name('guest.posts.index');
+Route::get('post/{post_slug}', 'PostController@show')->name('guest.posts.show');
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +30,8 @@ Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'web'], function () {
 
-
 	Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
+	Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 	Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
 
 	Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
@@ -75,6 +78,6 @@ Route::group(['middleware' => 'web'], function () {
 
 		Route::post('posts/get', 'PostController@get')->name('posts.get');
 		Route::post('partners/get', 'PartnerController@get')->name('partners.get');
-	});
 
+	});
 });

@@ -11,10 +11,7 @@ class SiteInfoController extends Controller
 {
 	public function index()
 	{
-		return view('admin.site_info.index', [
-			'visi' => Meta::where('meta_name', 'visi')->first(),
-			'misi' => Meta::where('meta_name', 'misi')->first(),
-		]);
+		return view('admin.site_info.index');
 	}
 
 	public function update(Request $request)
@@ -22,6 +19,15 @@ class SiteInfoController extends Controller
 		DB::beginTransaction();
 
 		try {
+			foreach ($request->image as $key => $value) {
+				$image = Meta::firstOrCreate([
+					'meta_name' => $key
+				]);
+
+				$image->meta_content = $value;
+				$image->save();
+			}
+
 			$visi = Meta::firstOrCreate([
 				'meta_name' => 'visi'
 			]);
@@ -42,7 +48,7 @@ class SiteInfoController extends Controller
 
 		} catch (\Exception $e) {
 			DB::rollback();
-            return redirect()->back()->withInput()->withErrors(['Internal Server Error.']);
+			return redirect()->back()->withInput()->withErrors(['Internal Server Error.']);
 		}
 	}
 }

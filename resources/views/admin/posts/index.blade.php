@@ -59,7 +59,7 @@
                 }, {
                     render: function (data, type, row) {
                         return '\
-                        <a href="#" class="btn btn-primary"><i class="ti-eye"></i></a>\
+                        <a href="{{ url('post') }}/' + row.slug + '" class="btn btn-primary"><i class="ti-eye"></i></a>\
                         <a href="{{ url('admin/posts') }}/' + row.id + '/edit" class="btn btn-warning"><i class="ti-pencil-alt"></i></a>\
                         <button data-id="' + row.id + '" data-title="' + row.title + '" class="btn btn-danger btn-delete"><i class="ti-trash"></i></button>\
                         '

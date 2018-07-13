@@ -26,6 +26,10 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::bind('post_slug', function ($value) {
+            return \App\Post::where('slug', $value)->first() ?? abort(404);
+        });
     }
 
     /**

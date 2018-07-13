@@ -191,7 +191,7 @@ class PostController extends Controller
     public function rules()
     {
         return [
-            'title' => 'required|string|max:30',
+            'title' => 'required|max:100',
             'content' => 'required',
         ];
     }

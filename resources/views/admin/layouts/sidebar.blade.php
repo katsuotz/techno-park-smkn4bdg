@@ -8,11 +8,11 @@
             <div class="peers ai-c fxw-nw">
               <div class="peer">
                 <div class="logo">
-                  <img src="{{ asset('assets/images/techno-park-logo-square.png') }}" alt="" width="50" style="margin: 10px;">
+                  <img src="{{ asset(Meta::get('icon') ?? 'assets/images/techno-park-logo-square.png') }}" alt="" width="50" style="margin: 10px;">
                 </div>
               </div>
               <div class="peer peer-greed">
-                <h5 class="lh-1 mB-0 logo-text">Techno Park <br>SMKN 4 Bandung</h5>
+                <h5 class="lh-1 mB-0 logo-text">{{ config('app.name') }}</h5>
               </div>
             </div>
           </a>
@@ -70,7 +70,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class='sidebar-link' href="{{ url('') }}">
+        <a class='sidebar-link' href="{{ url('') }}" target="_blank">
           <span class="icon-holder">
             <i class="c-cyan-500 ti-map"></i>
           </span>

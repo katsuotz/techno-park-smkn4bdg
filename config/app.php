@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_ENV', 'Techno Park'),
+    'name' => env('APP_NAME', 'Techno Park'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'id',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'id',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -210,6 +210,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Meta' => App\Meta::class,
 
     ],
 

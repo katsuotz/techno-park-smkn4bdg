@@ -68,8 +68,8 @@ return array(
         array(
             'driver' => 'LocalFileSystem',
             'path'   => public_path('uploads'), 
-            'URL'    => Config('app.url') . '/uploads',
-            'tmbURL' => Config('app.url') . '/uploads/.tmb',
+            'URL'    => Config('app.url') . 'uploads',
+            'tmbURL' => Config('app.url') . 'uploads/.tmb',
             'tmbPath' => public_path('uploads/.tmb'),
             'attributes' => array(
                 array( 
