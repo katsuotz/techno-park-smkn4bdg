@@ -11,6 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+    	// \Artisan::call('storage:link');
         return view('guest.home.index', [
             'posts' => Post::orderBy('created_at', 'desc')->limit(3)->get(),
             'partners' => Partner::orderBy('updated_at', 'desc')->get(),
