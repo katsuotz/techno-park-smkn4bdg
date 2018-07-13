@@ -162,6 +162,8 @@ return [
 
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
 
+        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+
     ],
 
     /*
