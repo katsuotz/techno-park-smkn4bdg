@@ -62,7 +62,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class='sidebar-link' href="{{ route('profile.index') }}">
+        <a class='sidebar-link' href="{{ route('profile') }}">
           <span class="icon-holder">
             <i class="c-teal-500 ti-user"></i>
           </span>

@@ -69,7 +69,6 @@
     <script type="text/javascript" src="{{ asset('assets/scripts/polyfill.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/fontawesome/js/all.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/scripts/sidebar/index.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/scripts/search/index.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('packages/barryvdh/elfinder/js/elfinder.min.js') }}"></script>
 

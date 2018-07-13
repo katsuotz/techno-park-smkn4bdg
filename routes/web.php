@@ -67,7 +67,7 @@ Route::group(['middleware' => 'web'], function () {
 		Route::get('site-info', 'SiteInfoController@index')->name('site_info.index');
 		Route::patch('site-info', 'SiteInfoController@update')->name('site_info.update');
 
-		Route::get('profile', 'ProfileController@index')->name('profile.index');
+		Route::get('profile', 'ProfileController@index')->name('profile');
 		Route::patch('profile', 'ProfileController@update')->name('profile.update');
 
 		/*
