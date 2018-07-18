@@ -104,7 +104,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY') ?? str_random(32),
 
     'cipher' => 'AES-256-CBC',
 
@@ -161,6 +161,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
+
+        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
 
     ],
 
