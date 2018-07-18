@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/techno-park-style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/slick/slick.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/slick/slick-theme.css') }}">
-	<link rel="icon" href="{{ asset('assets/images/techno-park-logo-square.png') }}">
+    <link rel="icon" href="{{ asset(Meta::get('icon') ?? 'assets/images/techno-park-logo-square.png') }}">
 	
 	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css?family=NTR|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
@@ -25,7 +25,7 @@
 	<nav class="navbar navbar-light position-absolute navbar-expand-lg w-100 px-4" id="navbar">
 		<div class="container">
 			<a class="navbar-brand font-weight-bold" href="{{ url('') }}">
-				<img src="{{ asset('assets/images/techno-park-logo.png') }}" height="50px">
+				<img src="{{ asset(Meta::get('logo') ?? 'assets/images/techno-park-logo.png') }}" height="50px">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				aria-expanded="false" aria-label="Toggle navigation">
