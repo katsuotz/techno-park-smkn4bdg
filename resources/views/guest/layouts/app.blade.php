@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Tecnho Park - SMKN 4 Bandung</title>
+    <title>{{ config('app.name') }}</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
 
