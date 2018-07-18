@@ -4,8 +4,8 @@
 
 	<!-- Header -->
 	<span id="home"></span>
-	<header class="main-header d-none d-md-block" style="background-image: url('{{ asset(Meta::get('banner')) }}')"></header>
-	<img src="{{ asset(Meta::get('banner')) }}" class="header-img-banner d-md-none mt-5">
+	<header class="main-header d-none d-md-block" style="background-image: url('{{ asset(Meta::get('banner' ?? 'assets/images/unity.jpg')) }}')"></header>
+	<img src="{{ asset(Meta::get('banner' ?? 'assets/images/unity.jpg')) }}" class="header-img-banner d-md-none mt-5">
 	<!-- Section -->
 
 	@if ($posts->count())

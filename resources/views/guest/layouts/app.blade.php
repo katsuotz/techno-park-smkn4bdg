@@ -55,7 +55,7 @@
 	<nav class="navbar fixed-top navbar-expand-lg w-100 my-navbar text-center" id="navbar">
 		<div class="container justify-content-center">
 			<a class="navbar-brand font-weight-bold" href="{{ url('') }}">
-				<img src="{{ asset('assets/images/techno-park-logo.png') }}" height="50px">
+				<img src="{{ asset(Meta::get('logo') ?? 'assets/images/techno-park-logo.png') }}" height="50px">
 			</a>
 		</div>
 	</nav>
