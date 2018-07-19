@@ -70,6 +70,9 @@
 	                $(this).elfinder({
 	                    resizable: false,
 	                    url: '<?= url('elfinder/connector') ?>',
+	                    customData: {
+	                    	_token: '{{ csrf_token() }}',
+	                    },
 	                    getFileCallback: function(url) {
 	                    	var image_path = '{{ asset('') }}' + url.path
 	                    	$('.ui-dialog-titlebar-close').click()

@@ -113,8 +113,10 @@
 	                $(this).elfinder({
 	                    resizable: false,
 	                    url: '<?= url('elfinder/connector') ?>',
+	                    customData: {
+	                    	_token: '{{ csrf_token() }}',
+	                    },
 	                    getFileCallback: function(url) {
-	                    	console.log(url)
 	                    	var path = url.path.replace('\\', '/')
 	                    	var image_path = '{{ asset('') }}' + path
 	                    	$('.ui-dialog-titlebar-close').click()
